@@ -52,9 +52,11 @@ final class WP_API_CORS {
 	 */
 	public function setup_filters() {
 
-		error_log( 'In ' . __CLASS__ . ' get_http_origin() = ' . print_r( get_http_origin(), true ) );
-		error_log( 'In ' . __CLASS__ . ' $_COOKIE = ' . print_r( $_COOKIE, true ) );
-		error_log( 'In ' . __CLASS__ . ' $_SERVER = ' . print_r( $_SERVER, true ) );
+        if (WP_DEBUG) {
+            error_log( 'In ' . __CLASS__ . ' get_http_origin() = ' . print_r( get_http_origin(), true ) );
+            error_log( 'In ' . __CLASS__ . ' $_COOKIE = ' . print_r( $_COOKIE, true ) );
+            error_log( 'In ' . __CLASS__ . ' $_SERVER = ' . print_r( $_SERVER, true ) );
+        }
 
 		add_filter( 'allowed_http_origin', '__return_true' );
 
